@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podaci o studentu</title>  
+</head>
+<body>
+
+    <h1>Podaci o studentu</h1>
+
+        <p>dobrodosli <%= student.name %></p>
+        <p>Smer: <%= student.major %></p>
+    
+    <!-- ZA EXAM EJS!! -->
+    <form method="GET" action="/ispit">
+        <input type="hidden" value="<% student.username %>" name="username">  <!-- SKRIVENO POLJE!(za slanje podataka) -->
+        <button type="submit">pogledaj rezultate ispita</button>
+    </form>
+
+    <h3>Izmenite podatke</h3>
+    <form method="POST" action="/student/update"> 
+        <input type="hidden" value="<% student.username %>" name="username">  
+        <div>
+            <label>Lozinka</label>
+            <input type="password" name="password" value="<%= student.password %>">
+        </div>
+        <div>
+            <label>Ime</label>
+            <input type="text" name="name" value="<%= student.name %>">
+        </div>
+        <div>
+            <label>Smer</label>
+            <select name="major">
+                <option value="CS">CS</option>
+                <option value="P&S">P&S</option>
+                <option value="M">M</option>
+            </select>
+        </div>
+        <button type="submit">Izmeni podatke</button>
+    </form>
+
+    <script>
+        const major = '<%= student.major %>'; 
+
+        console.log(major);  
+
+        const majorSelect = document.getElementsByName('major')[0]; 
+        console.log(majorSelect);
+        if(majorSelect){  
+            for(const option of majorSelect.options){ 
+                console.log(option.value, typeof option.value);
+                if(major === option.value)
+                    option.selected = true;  
+            }
+        }
+    </script>
+
+    <h3>Obrisi podatke</h3>
+    <!-- ne treba nam nista osim indeksa koji prosledjujemo kao url! -->
+    <form method="POST" action="/student/delete/<%= student.username %>">
+        <button type="submit">Obrisi podatke</button> 
+    </form>
+
+</body>
+</html>
