@@ -1,0 +1,45 @@
+/* IZ 1. ZADATKA!! */
+
+body {
+    padding: 30px;
+}
+
+.korisnik {
+    margin: 20px;
+}
+
+h1{
+    font-weight: bold;
+    text-align: center;
+}
+
+table {
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    width: 300px;  /* VELICINA TABELE */
+    height: 50px;
+
+    border: 1px dotted black;
+    text-align: center;
+}
+th {
+    border: 1px solid black;
+
+    color: white;
+    background-color: darkblue;
+}
+
+.slika{
+    background-position: center;  /* BACKGROUND-POSITION */
+
+    background-image: url(user.png);
+    background-size: 100px;
+    background-repeat: no-repeat;
+}

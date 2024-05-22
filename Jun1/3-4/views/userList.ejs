@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./1.css" rel="stylesheet">
+</head>
+<body>
+
+    <form method="POST" action="/starost" style="text-align: center;">
+        <input type="number" name="starost">
+        <button type="submit">Filtriraj</button>
+    </form>
+
+    <h1>LISTA KORISNIKA</h1>
+
+    <div class="korisnik">
+        <table>
+            <tr>
+                <th>SLIKA</th>
+                <th>INFORMACIJE</th>
+            </tr>
+            <% for(let korisnik of korisnici) { %>
+                <tr>
+                    <td rowspan="3" class="slika"></td>
+                    <td>IME: <%= korisnik.ime %></td>
+                </tr>
+                <tr>
+                    <td>STAROST: <%= korisnik.starost %></td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="POST" action="/user/<%= korisnik._id %>"> 
+                            <button type="submit">OBRISI KORISNIKA</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+
+</body>
+</html>
